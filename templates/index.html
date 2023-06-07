@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+<title>
+    Reciept Information extractor
+</title>
+<style>
+    body
+     {background-color: rgb(73, 73, 73);
+        background-image: url('C:\\projects\\capstone\\templates\\elements\\payment-payslip-invoice-template-concept.jpg');
+        background-size: 1676px 755px;
+        background-blend-mode: multiply;
+      text-align: center;
+    }
+    h4   {color: rgb(255, 255, 255);
+        font-size: 38px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+        top: -30px;
+    }
+    #desired   {color: rgb(255, 255, 255);
+        font-size: 38px;
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+        top: -42px;
+    }
+
+    hr{
+        position: relative;
+        top: 50 px;
+    }
+    p{
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        position:relative;
+        top: -66px;
+    }
+    #model{
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        position: relative;
+        top: -63px ;
+    }
+    input[type="radio"]{
+        display: none;
+    }
+    label{
+        position: relative;
+        top: -40px;
+        color: rgb(255, 253, 253); 
+        font-family: "poppins", sans-serif;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        padding: 10px 50px;
+        /*display: flex;*/
+        align-items: center;
+    }
+   /* label:before{
+        content: "";
+        height: 30px;
+        width:30px;
+        border: 3px solid black;
+        border-radius: 50%;
+        margin-right: 20px;
+    }*/
+    input[type="radio"]:checked + label{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+    }
+    #file-chosen{
+        position: relative;
+        top: -30px;
+    }
+    /*input[type="radio"]:checked + label:before{
+        height: 16px;
+        width: 16px;
+        border: 10px solid white;
+        background-color: black;
+    }*/
+    label:hover {
+        
+        box-shadow: 0 10px 20px rgba(139, 49, 204, 0.4);
+}
+
+    .button{
+        position: relative;
+        top: -14px;
+        /* left: 318px; */
+    }
+    .button {
+    background-color: #ffffff; /* Green */
+     border: none;
+     border-radius: 8px;
+     color: rgb(0, 0, 0);
+     padding: 15px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+}
+.button:hover{
+    box-shadow: 0 10px 20px rgba(139, 49, 204, 0.4);
+}
+.upload {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: -8.5rem;
+  font-family: sans-serif;
+  border-radius: 35.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#file-chosen{
+  color: white;
+  margin-left: 0.3rem;
+  font-family: sans-serif;
+}
+.form-control{
+    position: relative;
+    top: -30px;
+    background-color: #ffffff; /* Green */
+    border: none;
+    border-radius: 21px;
+    color: rgb(0, 0, 0);
+    padding: 7px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+    </style>
+</head>
+
+<header>
+    <h4>
+        Reciept Information extractor
+
+    </h4>
+    <p>Please enter the Desierd image of the reciept from which you want to extract the data</p>
+</header>
+<body>
+    <form action="form" method=post enctype=multipart/form-data>
+        <input type="file" name="file" id="actual-btn" hidden/>
+        <label for="actual-btn" class="upload">Choose File</label><br>
+        <br>
+        <span id="file-chosen">No file chosen</span><br>
+        <br>
+        <input id ='input' type="text" class="form-control" placeholder="Enter image name..." name="img-name">
+        <br>
+        <hr>
+        <h4 id="desired">
+            Select Desierd Model
+        </h4>
+        <p id="model">Please select the Model you wanna use for the data extraction, Selected model will be used and data will be extracted by the same</p>
+        <div class="model_name">
+        <input type="radio" name="modal" value="XLM" id="XML" checked="checked"><label for="layoutLM">layoutLM</label>
+        <input type="radio" name="modal" value="BERT" id="BERT"><label for="BERT">BERT</label>
+        <input type="radio" name="modal" value="ROBERTA" id="ROBERTA"><label for="ROBERTA">ROBERTA</label>
+        <input type="radio" name="modal" value="CANINE" id="CANINE"><label for="CANINE">CANINE</label>
+        <br>
+        </div>
+        
+        <input type="submit" value="Submit" class="button">
+    </form>
+    <script>
+        const actualBtn = document.getElementById('actual-btn');
+
+        const fileChosen = document.getElementById('file-chosen');
+
+        actualBtn.addEventListener('change', function(){
+             fileChosen.textContent = this.files[0].name
+            })
+    </script>
+</body>
+</html>
